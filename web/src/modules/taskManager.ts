@@ -12,8 +12,8 @@ export function initializeTasks(
     const progressTasks = initialTasks.filter(task => task.group === 1);
     const todoTasks = initialTasks.filter(task => task.group !== 1);
 
-    setProgress(progressTasks);
-    setTodos(todoTasks);
+    setProgress([...progressTasks]);
+    setTodos([...todoTasks]);
 }
 export function updatedTask() {
 
@@ -32,8 +32,8 @@ function moveNextGroupToProgress(
         const nextProgressTasks = todos.filter(task => task.group === nextGroup);
         const remainingTodos = todos.filter(task => task.group !== nextGroup);
 
-        setProgress(nextProgressTasks);
-        setTodos(remainingTodos);
+        setProgress([...nextProgressTasks]);
+        setTodos([...remainingTodos]);
     }
 }
 export function completeTask(
@@ -51,7 +51,7 @@ export function completeTask(
     if (taskToComplete) {
 
         const updatedProgress = progress.filter(task => task.title !== taskTitle);
-        setProgress(updatedProgress);
+        setProgress([...updatedProgress]);
 
         setCompleted([...completed, { ...taskToComplete, completed: true }]);
 
@@ -134,7 +134,7 @@ export function updateTask(
     if (taskIndexInProgress !== -1) {
         const updatedProgress = [...progress];
         updatedProgress[taskIndexInProgress] = { ...progress[taskIndexInProgress], ...updatedTask };
-        setProgress(updatedProgress);
+        setProgress([...updatedProgress]);
     } else if (taskIndexInCompleted !== -1) {
         const updatedCompleted = [...completed];
         updatedCompleted[taskIndexInCompleted] = { ...completed[taskIndexInCompleted], ...updatedTask };
@@ -163,7 +163,7 @@ export function deleteTask(taskId: number, progress: Task[],
     if (deleteProgress) {
 
         const updatedProgress = progress.filter(task => task.id !== taskId);
-        setProgress(updatedProgress);
+        setProgress([...updatedProgress]);
 
         if (updatedProgress.length === 0) {
             moveNextGroupToProgress(todos, setTodos, setProgress);
