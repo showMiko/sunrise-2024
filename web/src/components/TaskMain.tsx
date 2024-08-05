@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthProvider';
-import { initialTasks } from '@/utils/TaskList';
 import { completeTask, createTask, deleteTask, initializeTasks, updateTask } from '@/modules/taskManager';
 import Task from '@/model/Task';
 import { Button, Card, CardActions, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
@@ -76,7 +75,6 @@ const TaskMain = () => {
             variant="outlined"
             onChange={handleChange}
             value={editTask?.title || newTask?.title || ''}
-            // disabled={editTask?.id}
           />
           <TextField
             margin="dense"
@@ -179,8 +177,6 @@ const TaskMain = () => {
           <Typography variant='h4'>Completed</Typography>
           </div>
           <div style={{display:"flex",flexWrap:"wrap",flexDirection:"row"}}>
-
-          
           {completed.map((task: Task) => (
             <Card  key={task.id} sx={{ maxWidth: 300,minWidth:300,margin:"10px" }}>
             <CardContent>
