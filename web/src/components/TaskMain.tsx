@@ -126,7 +126,7 @@ const TaskMain = () => {
           <div style={{display:"flex",flexWrap:"wrap",flexDirection:"row"}}>
 
           {todos.map((task: Task) => (
-            <Card sx={{ maxWidth: 300,minWidth:300,margin:"10px" }}>
+            <Card key={task.id} sx={{ maxWidth: 300,minWidth:300,margin:"10px" }}>
             <CardContent>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 {task.title}
@@ -153,7 +153,7 @@ const TaskMain = () => {
           <div style={{display:"flex",flexWrap:"wrap",flexDirection:"row"}}>
 
         {progress.map((task: Task) => (
-          <Card sx={{ maxWidth: 300,minWidth:300,margin:"10px" }}>
+          <Card  key={task.id} sx={{ maxWidth: 300,minWidth:300,margin:"10px" }}>
             <CardContent>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 {task.title}
@@ -182,7 +182,7 @@ const TaskMain = () => {
 
           
           {completed.map((task: Task) => (
-            <Card sx={{ maxWidth: 300,minWidth:300,margin:"10px" }}>
+            <Card  key={task.id} sx={{ maxWidth: 300,minWidth:300,margin:"10px" }}>
             <CardContent>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 {task.title}
